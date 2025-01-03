@@ -45,3 +45,27 @@ int	ft_printf(const char *format, ...)
 {
 	int		i;
 	int		count;
+	va_list	args;
+
+	count = 0;
+	va_start(args, format);
+	i = 0;
+	if (format == NULL)
+		return (-1);
+	while (format[i] != '\0')
+	{
+		if (format[i] != '%')
+			count += write(1, &format[i], 1);
+		else
+		{
+			i++;
+			if (ft_strchr("cspdiuxX", format[i]))
+				count += ft_convert(format[i], args);
+			if (format[i] == '%')
+				count += ft_putchar('%');
+		}
+		i++;
+	}
+	va_end(args);
+	return (count);
+}
