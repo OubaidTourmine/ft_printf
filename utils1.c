@@ -47,3 +47,53 @@ int	ft_intlen(int n)
 		i++;
 	while (n != 0)
 	{
+		n /= 10;
+		i++;
+	}
+	return (i);
+}
+
+int	ft_putnbr(int nb)
+{
+	int	count;
+
+	count = ft_intlen(nb);
+	if (nb == -2147483648)
+	{
+		ft_putchar('-');
+		ft_putchar('2');
+		nb = 147483648;
+	}
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = nb * -1;
+	}
+	if (nb < 10)
+	{
+		ft_putchar(nb + 48);
+	}
+	else
+	{
+		ft_putnbr(nb / 10);
+		ft_putchar(nb % 10 + 48);
+	}
+	return (count);
+}
+
+int	ft_uns_dec(unsigned int nb)
+{
+	int	count;
+
+	count = 0;
+	if (nb < 10)
+	{
+		count += ft_putchar(nb + 48);
+	}
+	else
+	{
+		count += ft_uns_dec(nb / 10);
+		count += ft_putchar(nb % 10 + 48);
+	}
+	return (count);
+}
