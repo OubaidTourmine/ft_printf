@@ -24,3 +24,30 @@ int	ft_up_hex(unsigned int n)
 		count += ft_up_hex(n / 16);
 		count += ft_up_hex(n % 16);
 	}
+	else
+		count += ft_putchar(hex_dec[n]);
+	return (count);
+}
+
+int	ft_low_hex(unsigned int n)
+{
+	char	*hex_dec;
+	int		count;
+
+	hex_dec = "0123456789abcdef";
+	count = 0;
+	if (n >= 16)
+	{
+		count += ft_low_hex(n / 16);
+		count += ft_low_hex(n % 16);
+	}
+	else
+		count += ft_putchar(hex_dec[n]);
+	return (count);
+}
+
+int	ft_p(unsigned long n)
+{
+	char	*hex_dec;
+	int		count;
+
