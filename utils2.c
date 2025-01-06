@@ -51,3 +51,30 @@ int	ft_p(unsigned long n)
 	char	*hex_dec;
 	int		count;
 
+	hex_dec = "0123456789abcdef";
+	count = 0;
+	if (n >= 16)
+	{
+		count += ft_p(n / 16);
+		count += ft_p(n % 16);
+	}
+	else
+		count += ft_putchar(hex_dec[n]);
+	return (count);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while ((char)c != s[i])
+	{
+		if (!s[i])
+		{
+			return (NULL);
+		}
+		s++;
+	}
+	return ((char *)s);
+}
